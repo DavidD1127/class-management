@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${TEST_DB_URL:jdbc:h2:mem:phase2;MODE=MySQL;DB_CLOSE_DELAY=-1}
+    username: ${TEST_DB_USERNAME:sa}
+    password: ${TEST_DB_PASSWORD:}
+  flyway:
+    baseline-on-migrate: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+jwt:
+  secret: test-only-secret-at-least-32-characters-do-not-use-in-production

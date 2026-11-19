@@ -1,0 +1,26 @@
+# Ignore local secrets and build output
+.secrets/
+# 任意 target 构建目录（含 target-phase*、target-score-summary 等）
+backend/target*/
+frontend/node_modules/
+
+frontend/dist/
+_downloads/
+.tools/
+.test-data/
+*.log
+
+.playwright-cli/
+output/
+backend/src/main/resources/application-local.yml
+.env
+.env.local
+
+backend/target-phase6/
+backend/target-phase7*/
+
+# 本机会话交接单，不进仓库
+/.handoff/
+
+# 演示数据库默认数据目录（DEMO_DB_DATADIR 未设置时使用）
+/.data/

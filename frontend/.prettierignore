@@ -1,0 +1,5 @@
+node_modules/
+dist/
+public/theme-covers/
+public/theme-art/
+*.min.js

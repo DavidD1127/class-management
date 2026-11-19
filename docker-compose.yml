@@ -1,0 +1,33 @@
+# 本地开发用 MySQL。仅用于开发与演示，不要用于生产。
+# 启动：docker compose up -d
+# 停止：docker compose down        （数据保留在 ./.data/mysql-docker）
+# 清库：docker compose down -v     （务必先备份）
+
+# 显式指定项目名：仓库放在中文目录下时，Compose 无法从目录名推导合法项目名，
+# 会报 "project name must not be empty"。写死英文名可避免这个坑。
+name: class-management
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: class-management-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-demo-root-only}
+      MYSQL_DATABASE: class_management_demo
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --mysqlx=OFF
+    ports:
+      # 3310 是仓库默认端口；与宿主机已有 MySQL(3306) 不冲突
+      - "127.0.0.1:3310:3306"
+    volumes:
+      - ./.data/mysql-docker:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-demo-root-only}"]
+      interval: 5s
+      timeout: 3s
+      retries: 24
+      start_period: 30s

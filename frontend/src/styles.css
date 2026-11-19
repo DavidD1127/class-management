@@ -1,0 +1,23 @@
+:root{--primary:#315eaa;--ink:#22324a;--muted:#65748a;--border:#dfe5ee;--canvas:#f4f6fa;--el-color-primary:var(--primary);--el-color-success:#36836f;--el-color-warning:#b7791f;--el-color-danger:#c25555;--el-border-radius-base:6px;--el-font-family:system-ui,'Microsoft YaHei',sans-serif;color:var(--ink);font-family:var(--el-font-family);font-size:14px;background:var(--canvas)}
+*{box-sizing:border-box}body{margin:0}button,input,textarea{font:inherit}h1{font-size:26px;line-height:1.4;letter-spacing:-.4px}h2{font-size:19px;line-height:1.5}p{line-height:1.7}.hint{color:var(--muted)}.eyebrow{font-size:12px;color:var(--primary);letter-spacing:1px;margin:0 0 6px}.page-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.surface,.metric-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:22px}.metric-card p{margin:0 0 14px;color:var(--muted);font-size:13px}.metric-card strong{display:block;font-size:30px;line-height:1.3;font-variant-numeric:tabular-nums;font-weight:650;overflow-wrap:anywhere}.metric-card small{display:block;color:var(--muted);line-height:1.6;font-size:12px;margin-top:10px}.filters,.toolbar{padding:16px;background:white;border:1px solid var(--border);border-radius:8px;display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.filters>.el-select{width:220px}.filters>.el-date-editor{max-width:100%;flex-grow:0}.filters .el-button,.toolbar .el-button,.quick-links .el-button{margin-left:0}.el-table{--el-table-header-bg-color:#f7f9fc;--el-table-header-text-color:#526179;--el-table-border-color:var(--border);border:1px solid var(--border);border-radius:6px;font-size:13px}.el-table th.el-table__cell{height:44px;font-weight:600}.el-table .el-table__cell{padding:11px 0}.el-table .cell{overflow-wrap:anywhere}.el-table .el-button.is-link{min-height:28px}.el-pagination{padding:14px 0;font-variant-numeric:tabular-nums}.el-dialog{max-height:90vh;overflow:auto}.el-dialog__header{padding-bottom:18px;border-bottom:1px solid var(--border)}.el-dialog__body{padding-top:20px;overflow-wrap:anywhere}.el-dialog__footer{padding-top:16px;border-top:1px solid var(--border)}.el-form-item__label{color:var(--ink);font-weight:500}.el-button:focus-visible,summary:focus-visible{outline:2px solid var(--primary);outline-offset:3px}.el-empty__description p{font-size:13px}.el-tag{font-weight:500}.subheading{border-top:1px solid var(--border);padding-top:24px}.el-collapse{--el-collapse-border-color:var(--border)}.el-alert{margin:12px 0}.el-select,.el-input{min-width:0}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}@media(max-width:700px){.surface{padding:16px}.page-heading{flex-wrap:wrap}.filters>.el-select{width:100%}}
+:root{--ink:#26394a;--muted:#657486;--border:#e1e7eb;--canvas:#f5f7f8;--el-border-radius-base:8px;--el-text-color-primary:var(--ink);--el-text-color-regular:#4e6073;--el-border-color:var(--border);--el-font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif}
+.surface,.metric-card{border-radius:12px;padding:24px}.metric-card strong{font-size:32px}.filters,.toolbar{border-radius:12px;padding:18px}.el-table{--el-table-header-bg-color:#f0f4f7;--el-table-row-hover-bg-color:#f4f8fb;border-radius:10px;font-size:14px}.el-table th.el-table__cell{height:48px}.el-table .el-table__cell{padding:13px 0}.el-button{min-height:36px;font-weight:500}.el-button.is-link{min-height:28px}.el-input__wrapper,.el-select__wrapper{min-height:38px}.el-dialog{border-radius:16px;padding:24px}.el-message-box{border-radius:14px}.el-date-range-picker{max-width:calc(100vw - 24px)}.el-progress-bar__outer{background:#edf1f3}h1{font-weight:650}::selection{background:#dce8f6}@media(max-width:700px){.surface,.metric-card{padding:18px}.filters,.toolbar{padding:14px}}
+
+/* 手机竖屏（APK 里 WebView 宽度约 360 逻辑像素） */
+@media (max-width:760px){
+  h1{font-size:21px;letter-spacing:0}
+  .surface,.metric-card{border-radius:10px;padding:14px}
+  .metric-card strong{font-size:24px}
+  .filters,.toolbar{padding:12px;border-radius:10px;gap:8px}
+  .filters>.el-select,.filters>.el-input,.toolbar .el-input,.toolbar .el-select{width:100%}
+  .toolbar .el-button,.filters .el-button{flex:1 1 auto;min-width:calc(50% - 4px)}
+  .el-table{font-size:12.5px}
+  .el-table th.el-table__cell{height:38px}
+  .el-table .el-table__cell{padding:8px 0}
+  .el-table .cell{padding:0 8px;word-break:break-word}
+  .el-dialog{width:92%!important;padding:16px;border-radius:12px}
+  .el-message-box{width:88%!important}
+  .el-pagination{padding:10px 0;justify-content:center}
+  .page-heading{gap:10px}
+}
+

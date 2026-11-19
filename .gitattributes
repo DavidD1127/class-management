@@ -1,0 +1,41 @@
+# 统一换行与文本判定，避免 Windows/macOS 协作时整文件 diff
+* text=auto
+
+# 脚本类保持 CRLF，Windows 与旧版 PowerShell 兼容性最好
+*.ps1 text eol=crlf
+*.psm1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 源码与文档统一 LF
+*.java text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.ts text eol=lf
+*.vue text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+
+# 二进制，禁止任何换行处理
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.jar binary
+*.zip binary
+*.docx binary
+*.xlsx binary
+*.pdf binary
+
+# 归档与二进制 diff 摘要
+*.jar diff=binary
+*.png diff=binary

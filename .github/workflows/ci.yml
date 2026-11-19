@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: 后端测试（H2）
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 缓存 Maven 仓库
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ hashFiles('backend/pom.xml') }}
+          restore-keys: maven-
+
+      - name: 运行测试
+        working-directory: backend
+        # 测试默认使用内存 H2；显式清空 TEST_DB_URL，避免环境残留导致连到真实库
+        env:
+          TEST_DB_URL: ''
+          TEST_DB_USERNAME: ''
+          TEST_DB_PASSWORD: ''
+        # 用 sh 调用，避免 Windows 生成的文件缺少可执行位
+        run: sh ./mvnw -B --no-transfer-progress test
+
+      - name: 上传测试报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: backend/target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  frontend:
+    name: 前端构建
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: 安装依赖
+        working-directory: frontend
+        run: npm ci
+
+      - name: 构建
+        working-directory: frontend
+        run: npm run build
+
+  secrets:
+    name: 密钥扫描
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 扫描工作区中的疑似密钥
+        # 只扫当前文件；历史提交由人工复核，不阻断 CI
+        run: node scripts/Scan-Secrets.mjs --no-history --fail
