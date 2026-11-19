@@ -20,7 +20,7 @@
 
 ## 安卓便携版
 
-[下载 Android APK（预览）](https://github.com/DavidD1127/class-management-desktop/releases/tag/android-v0.1.2)。安卓版无需桌面后端，数据保存在设备内，与桌面版不互通。Release 同时提供安卓版源码和校验值。
+[下载 Android APK](https://github.com/DavidD1127/class-management-desktop/releases/tag/android-v0.1.2)。安卓版无需桌面后端，数据保存在设备内，与桌面版不互通。Release 同时提供安卓版源码和校验值。
 
 ## 快速开始
 
