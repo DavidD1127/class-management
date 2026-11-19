@@ -18,6 +18,10 @@
 - **软删除与回收站**：删除可恢复；有业务引用的学生不允许删除，只能改离校
 - **两种运行形态**：开发用 MySQL，分发用免安装的 H2 便携包
 
+## 安卓便携版
+
+[下载 Android APK（预览）](https://github.com/DavidD1127/class-management-desktop/releases/tag/android-v0.1.2)。安卓版无需桌面后端，数据保存在设备内，与桌面版不互通。Release 同时提供安卓版源码和校验值。
+
 ## 快速开始
 
 ### 方式一：便携版（不装数据库）
